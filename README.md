@@ -10,15 +10,13 @@
  |Minimum|2.00|-0.50|
  |Maximum|7.50|0.40|
 
-  Summarized what was accomplished in this study.  Describe 2-4 observations from simulating the flight path.
-  Reference the figures below as needed.
   This study expanded on the existing code of Example 1.3-1 Paper Airplane Flight Path, by Robert Stengel. The study found and plotted (Figure 1) the flight trajectories from varying velocity, and from varying the flight path angle (gamma). Next the study found and plotted 100 trajectories from randomly generated velocity and gamma's, it then found the average trajectory and plotted it on the same plot (Figure 2). Lastly, the study found the derivative of height with respect to time, and derivative of range with respect to time of the average trajectory, and plotted these as well (Figure 3). Some observations I had from simulating the flight path include that the plane would almost always return to a trim (steady) state, after 10 to 15 seconds. Additionally, the plane would rarely do a loop motion (depending on the initial velocity and gamma). Lastly, I noticed that the graph of derivatives (Figure 3) corrisponded well to the graph of the trajectories (Figure 2), which makes sense, as the plane initally flies up the change in height over time should be larger.
 
  
   # Code Listing
-  A list of each function/script and a single-line description of what it does.  The name of the function/script should link to the file in the repository on GitHub.
   
 This function calculates the equations of motion for the plane, from a given x (Velocity,Gamma,Height,and Range):
+[EqMotion](./EqMotion.m)
 ```
     function xdot = EqMotion(t,x)
 %	Fourth-Order Equations of Aircraft Motion
@@ -36,6 +34,7 @@ This function calculates the equations of motion for the plane, from a given x (
 end
 ```
 This function calculates derivative of y values with respect to x, using the central difference method of differentiation:
+[num_der_central](./num_der_central.m)
 ```
 function [fp_num] = num_der_central(x, y)
   drl = length(x);
@@ -54,6 +53,7 @@ function [fp_num] = num_der_central(x, y)
 end
 ```
 The following is the full script "PaperPlane.m", which does all as described in the original summary of what was accomplished in this study:
+[PaperPlane](./PaperPlane.m)
 ```
 %	Example 1.3-1 Paper Airplane Flight Path
 %	Copyright 2005 by Robert Stengel
@@ -213,13 +213,13 @@ disp('ADD LEGENDS TO GRAPHS')
 
   ## Fig. 1: Single Parameter Variation
   <2D trajectory simulated by varying single parameter at at time>
-![Single Parameter Variation](https://github.com/passo051/AEM3103-final/assets/167140449/3a17f841-ae96-4f6f-bb76-9fb5412aab56)
+![Single Parameter Variation](https://github.com/passo051/AEM3103-final/assets/167140449/d60337a5-a8c5-4684-a9a6-06d5f393af41)
 
 In this figure, the velocity and flight path angle is varied based on the values in the table. The black shows the trajectory generated from a nominal  velocity and gamma, the green shows the trajectory generated from a higher velocity and gamma, and the red shows the trajectory generated from a lower velocity and gamma.
 
   ## Fig. 2: Monte Carlo Simulation
   <2D trajectories simulated using random sampling of parameters, overlay polynomial fit onto plot.>
-![Monte Carlo Simulation](https://github.com/passo051/AEM3103-final/assets/167140449/887aa66b-f06c-4fab-8416-f12ce1a787cb)
+![Monte Carlo Simulation](https://github.com/passo051/AEM3103-final/assets/167140449/ccc40a9b-8a79-42a9-805f-8871a6c9bd41)
 
 In this figure, 100 trajectories from randomly generated velocity and gamma's are plotted, as well as the average trajectory in black found from a 9th degree polynomial fit to the data.
 
